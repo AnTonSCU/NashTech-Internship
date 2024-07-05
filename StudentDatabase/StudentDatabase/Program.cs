@@ -91,14 +91,6 @@ namespace StudentDatabase
                 }
             }
             
-            void PrintMembers(string title, List<Member> members)
-            {
-                Console.WriteLine($"\n{title}");
-                foreach (var member in members)
-                {
-                    Console.WriteLine($"{member.FirstName} {member.LastName}");
-                }
-            }
 
             PrintMembers("Members born in the year 2000:", born2000);
             PrintMembers("Members born before the year 2000:", before2000);
@@ -114,6 +106,14 @@ namespace StudentDatabase
             else
             {
                 Console.WriteLine("\nNo members were born in Ha Noi.");
+            }
+        }
+        static void PrintMembers(string title, List<Member> members)
+        {
+            Console.WriteLine($"\n{title}");
+            foreach (var member in members)
+            {
+                Console.WriteLine($"{member.FirstName} {member.LastName}");
             }
         }
     }
