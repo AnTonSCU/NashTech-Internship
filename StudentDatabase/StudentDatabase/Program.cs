@@ -47,9 +47,6 @@ namespace StudentDatabase
             };
 
             // 1. List of members who are Male
-            //var males = members.Where(m => m.Gender == "Male").ToList();
-            //Console.WriteLine("List of male members:");
-            //males.ForEach(m => Console.WriteLine($"{m.FirstName} {m.LastName}"));
             List<Member> males = new List<Member>();
             Console.WriteLine("List of male members:");
             foreach (var member in members)
@@ -62,13 +59,23 @@ namespace StudentDatabase
             }
 
             // 2. The oldest member
-            var oldest = members.OrderBy(m => m.DateOfBirth).First();
+            var oldest = members[0];
+            foreach (var member in members)
+            {
+                if (member.DateOfBirth < oldest.DateOfBirth)
+                {
+                    oldest = member;
+                }
+            }
+
             Console.WriteLine($"\nThe oldest member is: {oldest.FirstName} {oldest.LastName}, Age: {oldest.Age}");
 
             // 3. List of full names
-            var fullNames = members.Select(m => m.FullName).ToList();
             Console.WriteLine("\nList of full names:");
-            fullNames.ForEach(name => Console.WriteLine(name));
+            foreach (var member in members)
+            {
+                Console.WriteLine(member.FullName);
+            }
 
             // 4. Lists based on birth year
             List<Member> born2000 = new List<Member>();
